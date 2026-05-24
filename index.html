@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0F1A2E">
 
 <!-- Canonical + robots -->
-<link rel="canonical" href="https://poweredupelectric.com/">
+<link rel="canonical" href="https://www.poweredbymicah.com/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Powered Up LLC">
 <meta name="geo.region" content="US-MA">
@@ -26,8 +26,8 @@
 <meta property="og:title" content="Powered Up LLC | Licensed Electrician | Taunton, MA">
 <meta property="og:description" content="Owner-operated electrical contractor — Taunton to Plymouth. Free estimates within 24 hours. When you call, you get Micah.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://poweredupelectric.com">
-<meta property="og:image" content="https://poweredupelectric.com/og-image.jpg">
+<meta property="og:url" content="https://www.poweredbymicah.com">
+<meta property="og:image" content="https://www.poweredbymicah.com/og-image.jpg">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Powered Up LLC">
 
@@ -35,7 +35,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Powered Up LLC | Licensed Electrician | Taunton, MA">
 <meta name="twitter:description" content="Owner-operated electrical contractor — Taunton to Plymouth. Free estimates within 24 hours. When you call, you get Micah.">
-<meta name="twitter:image" content="https://poweredupelectric.com/og-image.jpg">
+<meta name="twitter:image" content="https://www.poweredbymicah.com/og-image.jpg">
 
 <!-- ============================================================
      ASSETS TO SWAP IN (Christian to send):
@@ -53,7 +53,7 @@
 <!-- ============================================================
      STRUCTURED DATA (JSON-LD) — Google rich results / local SEO
      UPDATE BEFORE LAUNCH:
-     - "url" → live domain when locked (e.g. https://poweredupelectric.com)
+     - "url" → live domain when locked (e.g. https://www.poweredbymicah.com)
      - "telephone" → real phone (currently placeholder)
      - "image" / "logo" → actual hosted URLs after Vercel deploy
      - "geo" → fine-tune lat/lng to exact 2 Monica St address if desired
@@ -62,15 +62,15 @@
 {
   "@context": "https://schema.org",
   "@type": "Electrician",
-  "@id": "https://poweredupelectric.com/#business",
+  "@id": "https://www.poweredbymicah.com/#business",
   "name": "Powered Up LLC",
   "alternateName": "Powered Up Electric",
   "description": "Licensed, insured, owner/operator electrical contractor based in Taunton, MA, serving the South Shore and southeastern Massachusetts. Owner Micah Gentile personally handles every job — new construction, panel upgrades, EV charger installation, kitchen and bathroom remodel wiring, additions, and solar maintenance. Residential and small commercial work. Free estimates within 24 hours.",
-  "url": "https://poweredupelectric.com",
+  "url": "https://www.poweredbymicah.com",
   "telephone": "+1-508-555-0100",
   "email": "micah.gentile@poweredbymicah.com",
-  "image": "https://poweredupelectric.com/og-image.jpg",
-  "logo": "https://poweredupelectric.com/powered-up-logo.png",
+  "image": "https://www.poweredbymicah.com/og-image.jpg",
+  "logo": "https://www.poweredbymicah.com/powered-up-logo.png",
   "priceRange": "$$",
   "currenciesAccepted": "USD",
   "paymentAccepted": "Cash, Check, Credit Card, ACH",
@@ -78,7 +78,7 @@
     "@type": "Person",
     "name": "Micah Gentile",
     "jobTitle": "Owner / Operator, Licensed Electrician",
-    "worksFor": { "@id": "https://poweredupelectric.com/#business" }
+    "worksFor": { "@id": "https://www.poweredbymicah.com/#business" }
   },
   "founderName": "Micah Gentile",
   "address": {
@@ -206,8 +206,8 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Powered Up LLC",
-  "url": "https://poweredupelectric.com",
-  "publisher": { "@id": "https://poweredupelectric.com/#business" },
+  "url": "https://www.poweredbymicah.com",
+  "publisher": { "@id": "https://www.poweredbymicah.com/#business" },
   "inLanguage": "en-US"
 }
 </script>
@@ -1364,10 +1364,11 @@
         <!-- honeypot -->
         <input type="text" name="website" style="position:absolute;left:-9999px;" tabindex="-1" autocomplete="off">
 
-        <button type="button" class="hero-form-submit" onclick="alert('Form needs wired to Resend — see A2Z Concrete setup. Required env vars: RESEND_API_KEY, QUOTE_TO_EMAIL, QUOTE_FROM_EMAIL.');">
+        <button type="button" id="hf-submit" class="hero-form-submit" onclick="submitQuote()">
           Send Request
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
+        <div id="hf-error" style="display:none;margin-top:10px;color:#ff6b6b;font-size:14px;font-weight:600;"></div>
 
         <div class="hero-form-foot">
           Prefer to talk? <a href="tel:+15085550100">Call (508) 555-0100</a>
@@ -1787,6 +1788,75 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<script>
+  async function submitQuote() {
+    var btn = document.getElementById('hf-submit');
+    var errEl = document.getElementById('hf-error');
+    var formCard = document.querySelector('.hero-form');
+
+    var name = document.getElementById('hf-name').value.trim();
+    var phone = document.getElementById('hf-phone').value.trim();
+    var email = document.getElementById('hf-email').value.trim();
+    var service = document.getElementById('hf-service').value.trim();
+    var town = document.getElementById('hf-town').value.trim();
+    var honeypot = (document.querySelector('input[name="website"]') || {}).value || '';
+
+    errEl.style.display = 'none';
+    errEl.textContent = '';
+
+    if (!name || !phone || !email || !service) {
+      errEl.textContent = 'Please fill in name, phone, email, and service.';
+      errEl.style.display = 'block';
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errEl.textContent = 'Please enter a valid email address.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    var originalHTML = btn.innerHTML;
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    btn.style.cursor = 'wait';
+    btn.textContent = 'Sending...';
+
+    try {
+      var res = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name: name, phone: phone, email: email, service: service, town: town, website: honeypot })
+      });
+      var data = await res.json().catch(function () { return { ok: false, error: 'Unexpected server response.' }; });
+
+      if (res.ok && data && data.ok) {
+        formCard.innerHTML =
+          '<div style="text-align:center;padding:24px 8px;">' +
+            '<div style="width:64px;height:64px;margin:0 auto 18px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;">' +
+              '<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#0a1a2f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>' +
+            '</div>' +
+            '<h3 style="margin:0 0 10px;font-family:\'Archivo Black\',sans-serif;font-size:24px;color:var(--cream);">Thanks!</h3>' +
+            '<p style="margin:0 0 18px;color:var(--cream);font-size:16px;line-height:1.5;">We&rsquo;ll be in touch within 24 hours.</p>' +
+            '<p style="margin:0;color:rgba(244,239,230,0.7);font-size:14px;">Need to talk sooner? <a href="tel:+15085550100" style="color:var(--yellow);font-weight:600;text-decoration:none;">Call (508) 555-0100</a></p>' +
+          '</div>';
+        return;
+      }
+
+      var msg = (data && data.error) || 'Something went wrong. Please try again or call us.';
+      errEl.textContent = msg;
+      errEl.style.display = 'block';
+    } catch (e) {
+      errEl.textContent = 'Network error. Please try again or call (508) 555-0100.';
+      errEl.style.display = 'block';
+    } finally {
+      btn.disabled = false;
+      btn.style.opacity = '';
+      btn.style.cursor = '';
+      btn.innerHTML = originalHTML;
+    }
+  }
 </script>
 
 </body>
