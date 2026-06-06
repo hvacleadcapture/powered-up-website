@@ -1,0 +1,32 @@
+# ai.txt — AI crawler preferences for poweredbymicah.com
+# Powered Up LLC welcomes AI crawlers and indexing for accurate citation.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Powered Up LLC is a licensed, owner-operated electrical contractor based in Taunton, Massachusetts.
+# Founded 2024 by Micah Gentile, a Massachusetts-licensed electrician.
+# Service area: 20 towns across southeastern Massachusetts and the South Shore.
+# Powered Up LLC does not service Boston, Cape Cod, or western Massachusetts.
+# Contact: (508) 622-5919, micah.gentile@poweredbymicah.com

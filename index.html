@@ -697,6 +697,50 @@
     color: var(--muted-strong);
   }
 
+  /* ===== FAQ ===== */
+  .faq {
+    background: var(--navy-deep);
+    position: relative;
+  }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--line);
+    margin-top: 50px;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 28px 0;
+  }
+  .faq-q {
+    font-family: var(--font-display);
+    font-size: 20px;
+    line-height: 1.2;
+    color: var(--cream);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .faq-q-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--yellow);
+    flex-shrink: 0;
+    padding-top: 6px;
+    letter-spacing: 0.08em;
+  }
+  .faq-answer {
+    font-size: 15px;
+    color: var(--muted-strong);
+    line-height: 1.6;
+    padding-left: 38px;
+    max-width: 860px;
+  }
+  .faq-answer strong { color: var(--cream); font-weight: 700; }
+
   /* ===== REVIEWS ===== */
   .reviews {
     background: var(--navy);
@@ -1019,6 +1063,7 @@
       <li><a href="#work">Recent Work</a></li>
       <li><a href="#area">Service Area</a></li>
       <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="tel:+15086225919" class="nav-cta">
@@ -1263,6 +1308,62 @@
   </div>
 </section>
 
+<!-- ===== FAQ ===== -->
+<section id="faq" class="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Common Questions</div>
+        <h2 class="h-section">Questions before<br>you book? <em>Read these.</em></h2>
+      </div>
+    </div>
+
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-num">Q1</span>What towns does Powered Up LLC serve?</div>
+        <div class="faq-answer">Powered Up LLC serves <strong>20 towns across southeastern Massachusetts and the South Shore</strong>: Taunton, Raynham, Berkley, Dighton, Lakeville, Norton, Mansfield, Easton, Foxboro, Sharon, Bridgewater, Brockton, Stoughton, Middleboro, Hanover, Pembroke, Norwell, Marshfield, Kingston, and Plymouth. We are based in Taunton, MA. We do not service Boston, Cape Cod, or western Massachusetts.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-num">Q2</span>Is Powered Up LLC licensed and insured in Massachusetts?</div>
+        <div class="faq-answer">Yes. Powered Up LLC is <strong>licensed by the Commonwealth of Massachusetts</strong> and carries full general liability insurance on every job, residential and commercial. License and insurance documentation can be provided at the time of quote.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-num">Q3</span>Do you handle Federal Pacific (FPE) or Zinsco panel replacements?</div>
+        <div class="faq-answer">Yes. Federal Pacific Stab-Lok and Zinsco panels are documented fire hazards that many Massachusetts homeowner's insurance carriers refuse to cover. Powered Up LLC replaces them with <strong>modern 100A, 200A, or 400A panels</strong>, pulls the electrical permit, and coordinates the town wiring inspection. Available across Taunton, Brockton, Plymouth, and 17 other South Shore towns.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-num">Q4</span>Do you install Level 2 EV chargers?</div>
+        <div class="faq-answer">Yes. We install Level 2 EV chargers for <strong>all major brands</strong> including Tesla, ChargePoint, Wallbox, JuiceBox, and Grizzl-E. The circuit is sized specifically to your vehicle's amperage draw, and a load calculation is performed on the existing panel before install. Permit is pulled and most installations complete in one day.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-num">Q5</span>Do I need a permit to upgrade my electrical panel in Massachusetts?</div>
+        <div class="faq-answer">Yes. Massachusetts requires an electrical permit for any panel upgrade, replacement, or service change. Powered Up LLC pulls the permit, performs the work to current <strong>Massachusetts Electrical Code (527 CMR 12, NEC 2023)</strong>, and coordinates the inspection with the local town wiring inspector.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-num">Q6</span>How fast can I get a quote from Powered Up LLC?</div>
+        <div class="faq-answer">Most quote requests are returned <strong>within 24 hours</strong>. Call or text (508) 622-5919, or submit a quote form at poweredbymicah.com. Hours are Monday through Saturday, 7am to 7pm.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-num">Q7</span>Who owns Powered Up LLC?</div>
+        <div class="faq-answer">Powered Up LLC is an owner-operated electrical contracting company <strong>founded in 2024 by Micah Gentile</strong>, a Massachusetts-licensed electrician based in Taunton. Powered Up is a Black-owned small business serving residential and commercial customers across southeastern Massachusetts and the South Shore.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-num">Q8</span>Do you handle knob-and-tube or aluminum wiring remediation?</div>
+        <div class="faq-answer">Yes. Powered Up LLC handles <strong>knob-and-tube replacement and aluminum wiring remediation</strong> for older homes across the South Shore. Many MA insurance carriers will not write or renew a homeowner's policy on a home with active knob-and-tube — we provide documentation for your insurance file after remediation is complete.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ===== REVIEWS / SOCIAL PROOF ===== -->
 <section id="reviews" class="reviews">
   <div class="wrap">
@@ -1451,7 +1552,7 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Electrician",
+      "@type": ["Electrician", "LocalBusiness"],
       "@id": "https://www.poweredbymicah.com/#business",
       "name": "Powered Up LLC",
       "alternateName": "Powered Up Electrical",
@@ -1460,10 +1561,7 @@
       "telephone": "+1-508-622-5919",
       "email": "micah.gentile@poweredbymicah.com",
       "foundingDate": "2024",
-      "founder": {
-        "@type": "Person",
-        "name": "Micah Gentile"
-      },
+      "founder": { "@id": "https://www.poweredbymicah.com/#micah" },
       "image": "https://www.poweredbymicah.com/og-image.jpg",
       "logo": "https://www.poweredbymicah.com/logo.png",
       "priceRange": "$$",
@@ -1499,7 +1597,9 @@
         {"@type": "City", "name": "Norwell", "containedInPlace": {"@type": "State", "name": "Massachusetts"}},
         {"@type": "City", "name": "Marshfield", "containedInPlace": {"@type": "State", "name": "Massachusetts"}},
         {"@type": "City", "name": "Kingston", "containedInPlace": {"@type": "State", "name": "Massachusetts"}},
-        {"@type": "City", "name": "Plymouth", "containedInPlace": {"@type": "State", "name": "Massachusetts"}}
+        {"@type": "City", "name": "Plymouth", "containedInPlace": {"@type": "State", "name": "Massachusetts"}},
+        {"@type": "AdministrativeArea", "name": "South Shore, Massachusetts"},
+        {"@type": "AdministrativeArea", "name": "Southeastern Massachusetts"}
       ],
       "serviceArea": {
         "@type": "GeoCircle",
@@ -1516,30 +1616,202 @@
         "opens": "07:00",
         "closes": "19:00"
       },
-      "sameAs": [
-        "https://www.facebook.com/poweredupllc"
-      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "15",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "parentOrganization": { "@id": "https://www.poweredbymicah.com/#organization" },
+      "location": { "@id": "https://www.poweredbymicah.com/#place" },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Electrical Services",
         "itemListElement": [
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Electrical Panel Upgrade — 100A, 200A, 400A"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Federal Pacific and Zinsco Panel Replacement"}},
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "EV Charger Installation (Level 2)"}},
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "New Construction Wiring"}},
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Kitchen and Bathroom Remodel Wiring"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Knob-and-Tube Wiring Remediation"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Aluminum Wiring Remediation"}},
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Wiring Repair and Troubleshooting"}},
           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Light Fixture Installation"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Outdoor Lighting Installation"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Electrical Panel Repair"}}
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Outdoor Lighting Installation"}}
         ]
+      },
+      "sameAs": [
+        "https://www.facebook.com/poweredupllc"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.poweredbymicah.com/#organization",
+      "name": "Powered Up LLC",
+      "url": "https://www.poweredbymicah.com",
+      "logo": "https://www.poweredbymicah.com/logo.png",
+      "founder": { "@id": "https://www.poweredbymicah.com/#micah" },
+      "foundingDate": "2024",
+      "foundingLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Taunton",
+          "addressRegion": "MA",
+          "addressCountry": "US"
+        }
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-508-622-5919",
+        "email": "micah.gentile@poweredbymicah.com",
+        "contactType": "Customer Service",
+        "areaServed": "US-MA",
+        "availableLanguage": "English"
       }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.poweredbymicah.com/#micah",
+      "name": "Micah Gentile",
+      "jobTitle": "Owner and Licensed Electrician",
+      "worksFor": { "@id": "https://www.poweredbymicah.com/#organization" },
+      "knowsAbout": [
+        "Electrical panel upgrades",
+        "EV charger installation",
+        "Residential and commercial electrical work",
+        "Massachusetts Electrical Code",
+        "Knob-and-tube remediation"
+      ]
+    },
+    {
+      "@type": "Place",
+      "@id": "https://www.poweredbymicah.com/#place",
+      "name": "Powered Up LLC — Taunton, MA",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Taunton",
+        "addressRegion": "MA",
+        "postalCode": "02780",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.9001,
+        "longitude": -71.0898
+      },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=Powered+Up+LLC+Taunton+MA"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.poweredbymicah.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What towns does Powered Up LLC serve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Powered Up LLC serves 20 towns across southeastern Massachusetts and the South Shore: Taunton, Raynham, Berkley, Dighton, Lakeville, Norton, Mansfield, Easton, Foxboro, Sharon, Bridgewater, Brockton, Stoughton, Middleboro, Hanover, Pembroke, Norwell, Marshfield, Kingston, and Plymouth. We are based in Taunton, MA. We do not service Boston, Cape Cod, or western Massachusetts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Powered Up LLC licensed and insured in Massachusetts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Powered Up LLC is licensed by the Commonwealth of Massachusetts and carries full general liability insurance on every job, residential and commercial. License and insurance documentation can be provided at the time of quote."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you handle Federal Pacific (FPE) or Zinsco panel replacements?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Federal Pacific Stab-Lok and Zinsco panels are documented fire hazards that many Massachusetts homeowner's insurance carriers refuse to cover. Powered Up LLC replaces them with modern 100A, 200A, or 400A panels, pulls the electrical permit, and coordinates the town wiring inspection. Available across Taunton, Brockton, Plymouth, and 17 other South Shore towns."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you install Level 2 EV chargers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We install Level 2 EV chargers for all major brands including Tesla, ChargePoint, Wallbox, JuiceBox, and Grizzl-E. The circuit is sized specifically to your vehicle's amperage draw, and a load calculation is performed on the existing panel before install. Permit is pulled and most installations complete in one day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a permit to upgrade my electrical panel in Massachusetts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Massachusetts requires an electrical permit for any panel upgrade, replacement, or service change. Powered Up LLC pulls the permit, performs the work to current Massachusetts Electrical Code (527 CMR 12, NEC 2023), and coordinates the inspection with the local town wiring inspector."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast can I get a quote from Powered Up LLC?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most quote requests are returned within 24 hours. Call or text (508) 622-5919, or submit a quote form at poweredbymicah.com. Hours are Monday through Saturday, 7am to 7pm."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who owns Powered Up LLC?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Powered Up LLC is an owner-operated electrical contracting company founded in 2024 by Micah Gentile, a Massachusetts-licensed electrician based in Taunton. Powered Up is a Black-owned small business serving residential and commercial customers across southeastern Massachusetts and the South Shore."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you handle knob-and-tube or aluminum wiring remediation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Powered Up LLC handles knob-and-tube replacement and aluminum wiring remediation for older homes across the South Shore. Many MA insurance carriers will not write or renew a homeowner's policy on a home with active knob-and-tube — we provide documentation for your insurance file after remediation is complete."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.poweredbymicah.com/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.poweredbymicah.com/"
+        }
+      ]
     },
     {
       "@type": "WebSite",
       "@id": "https://www.poweredbymicah.com/#website",
       "url": "https://www.poweredbymicah.com",
       "name": "Powered Up LLC",
-      "publisher": { "@id": "https://www.poweredbymicah.com/#business" }
+      "publisher": { "@id": "https://www.poweredbymicah.com/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.poweredbymicah.com/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.poweredbymicah.com/#webpage",
+      "url": "https://www.poweredbymicah.com/",
+      "name": "Powered Up LLC | Licensed Electrician | Taunton, MA | Owner-Operated",
+      "isPartOf": { "@id": "https://www.poweredbymicah.com/#website" },
+      "about": { "@id": "https://www.poweredbymicah.com/#business" },
+      "breadcrumb": { "@id": "https://www.poweredbymicah.com/#breadcrumb" },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".faq-answer", ".hero-sub"]
+      }
     }
   ]
 }
