@@ -1095,3 +1095,188 @@ footer {
   font-family: var(--font-mono);
   font-size: 0.85em;
 }
+
+/* ===== NAV RIGHT CLUSTER + MOBILE HAMBURGER ===== */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  color: var(--cream);
+  background: transparent;
+  flex-shrink: 0;
+}
+.nav-burger svg {
+  width: 26px;
+  height: 26px;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+@media (max-width: 920px) {
+  /* desktop links hidden (declared above); reveal the hamburger */
+  .nav-burger {
+    display: inline-flex;
+  }
+
+  /* mobile dropdown menu */
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--navy-deep);
+    border-bottom: 1px solid var(--line-strong);
+    box-shadow: 0 18px 30px -12px rgba(0, 0, 0, 0.6);
+    max-height: calc(100dvh - 100px);
+    overflow-y: auto;
+  }
+  .mobile-menu.open {
+    display: block;
+  }
+  .mobile-menu a {
+    display: flex;
+    align-items: center;
+    min-height: 52px;
+    padding: 0 24px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted-strong);
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-menu a:last-child {
+    border-bottom: 0;
+  }
+  .mobile-menu a.active {
+    color: var(--yellow);
+  }
+  .mobile-menu a:active {
+    background: var(--navy-mid);
+    color: var(--yellow);
+  }
+  .mobile-menu-cta {
+    gap: 10px;
+    color: var(--yellow) !important;
+    font-weight: 800 !important;
+  }
+  .mobile-menu-cta svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ensure the Call CTA meets the 44px touch-target minimum */
+  .nav-cta {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 720px) {
+  /* keep the top info bar tappable (phone link) without ballooning it */
+  .topbar a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .topbar-inner {
+    min-height: 44px;
+  }
+
+  /* footer links: full-row touch targets (>=44px tall and wide) */
+  .footer-col li {
+    margin-bottom: 2px;
+  }
+  .footer-col li a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  /* blog "back" link touch target */
+  .post-back {
+    min-height: 44px;
+    padding: 4px 0;
+  }
+
+  /* form fields: 16px font prevents iOS auto-zoom; 46px height for touch */
+  .form-row input,
+  .form-row select,
+  .form-row textarea {
+    min-height: 46px;
+    font-size: 16px;
+  }
+  .form-row textarea {
+    min-height: 96px;
+  }
+  /* tame the offset drop-shadow so it never causes horizontal overflow */
+  .form-card {
+    box-shadow: 6px 6px 0 rgba(255, 212, 0, 0.6);
+  }
+}
+
+@media (max-width: 640px) {
+  /* hero: fits within a single phone screen.
+     NOTE: .hero is a <section>, which inherits `section { padding: 80px 0 }`
+     on mobile — zero it here so the hero never exceeds the viewport. */
+  .hero {
+    min-height: auto;
+    padding: 0;
+  }
+  .hero-content {
+    padding: 24px 20px 32px;
+    min-height: calc(100dvh - 150px);
+    justify-content: center;
+  }
+  .hero-eyebrow {
+    margin-bottom: 16px;
+    padding: 6px 12px;
+  }
+  .hero h1 {
+    font-size: clamp(1.85rem, 8vw, 2.4rem);
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+  .hero-sub {
+    font-size: 14.5px;
+    line-height: 1.5;
+    margin-bottom: 22px;
+  }
+  .hero-ctas {
+    margin-bottom: 22px;
+    gap: 10px;
+    width: 100%;
+  }
+  .hero-ctas .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+    padding: 14px 18px;
+  }
+  .hero-meta {
+    gap: 14px 22px;
+    padding-top: 18px;
+  }
+  .hero-meta-val {
+    font-size: 18px;
+  }
+  .hero-meta-lbl {
+    font-size: 9px;
+  }
+
+  /* never let any element create a horizontal scrollbar on small screens */
+  .marquee,
+  .services-grid,
+  .towns-grid {
+    max-width: 100%;
+  }
+}
