@@ -1,21 +1,25 @@
-import { Resend } from 'resend';
+import { Resend } from "resend";
 
-const rateLimitMap = new Map();
+// Run on the Node.js runtime (Resend SDK + in-memory rate limiting).
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
+const rateLimitMap = new Map<string, { windowStart: number; count: number }>();
 const WINDOW_MS = 60 * 60 * 1000;
 const MAX_PER_WINDOW = 3;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function getClientIp(req) {
-  const fwd = req.headers['x-forwarded-for'];
-  if (typeof fwd === 'string' && fwd.length > 0) {
-    return fwd.split(',')[0].trim();
+function getClientIp(req: Request): string {
+  const fwd = req.headers.get("x-forwarded-for");
+  if (typeof fwd === "string" && fwd.length > 0) {
+    return fwd.split(",")[0].trim();
   }
-  return req.headers['x-real-ip'] || req.socket?.remoteAddress || 'unknown';
+  return req.headers.get("x-real-ip") || "unknown";
 }
 
-function checkRateLimit(ip) {
-  if (process.env.NODE_ENV !== 'production') return true;
+function checkRateLimit(ip: string): boolean {
+  if (process.env.NODE_ENV !== "production") return true;
   const now = Date.now();
   const entry = rateLimitMap.get(ip);
   if (!entry || now - entry.windowStart > WINDOW_MS) {
@@ -27,17 +31,25 @@ function checkRateLimit(ip) {
   return true;
 }
 
-function esc(str) {
-  return String(str ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
+function esc(str: unknown): string {
+  return String(str ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
-function buildHtml({ name, phone, email, service, town }) {
-  const townDisplay = town || 'Not provided';
+type QuoteFields = {
+  name: string;
+  phone: string;
+  email: string;
+  service: string;
+  town: string;
+};
+
+function buildHtml({ name, phone, email, service, town }: QuoteFields): string {
+  const townDisplay = town || "Not provided";
   return `<!doctype html>
 <html>
 <body style="margin:0;padding:0;background:#f4efe6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#0a1a2f;">
@@ -92,61 +104,68 @@ function buildHtml({ name, phone, email, service, town }) {
 </html>`;
 }
 
-function buildText({ name, phone, email, service, town }) {
+function buildText({ name, phone, email, service, town }: QuoteFields): string {
   return [
-    'New Quote Request — Powered Up LLC',
-    '',
+    "New Quote Request — Powered Up LLC",
+    "",
     `Name:    ${name}`,
     `Phone:   ${phone}`,
     `Email:   ${email}`,
     `Service: ${service}`,
-    `Town:    ${town || 'Not provided'}`,
-    '',
-    'Reply to this email to respond directly to the homeowner.',
-  ].join('\n');
+    `Town:    ${town || "Not provided"}`,
+    "",
+    "Reply to this email to respond directly to the homeowner.",
+  ].join("\n");
 }
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
-    return res.status(405).json({ ok: false, error: 'Method not allowed' });
-  }
-
+export async function POST(req: Request) {
   try {
-    const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
+    const raw = await req.text();
+    const body = raw ? JSON.parse(raw) : {};
 
-    if (body.website && String(body.website).trim() !== '') {
-      return res.status(200).json({ ok: true });
+    if (body.website && String(body.website).trim() !== "") {
+      return Response.json({ ok: true });
     }
 
-    const name = String(body.name || '').trim();
-    const phone = String(body.phone || '').trim();
-    const email = String(body.email || '').trim();
-    const service = String(body.service || '').trim();
-    const town = String(body.town || '').trim();
+    const name = String(body.name || "").trim();
+    const phone = String(body.phone || "").trim();
+    const email = String(body.email || "").trim();
+    const service = String(body.service || "").trim();
+    const town = String(body.town || "").trim();
 
     if (!name || !phone || !email || !service) {
-      return res.status(400).json({ ok: false, error: 'Missing required fields.' });
+      return Response.json({ ok: false, error: "Missing required fields." }, { status: 400 });
     }
     if (!EMAIL_RE.test(email)) {
-      return res.status(400).json({ ok: false, error: 'Please enter a valid email address.' });
+      return Response.json(
+        { ok: false, error: "Please enter a valid email address." },
+        { status: 400 }
+      );
     }
 
     const ip = getClientIp(req);
     if (!checkRateLimit(ip)) {
-      return res.status(429).json({ ok: false, error: 'Too many requests. Please try again later or call us directly.' });
+      return Response.json(
+        { ok: false, error: "Too many requests. Please try again later or call us directly." },
+        { status: 429 }
+      );
     }
 
     const apiKey = process.env.RESEND_API_KEY;
     const toEmail = process.env.QUOTE_TO_EMAIL;
     const fromEmail = process.env.QUOTE_FROM_EMAIL;
     if (!apiKey || !toEmail || !fromEmail) {
-      console.error('Quote form misconfigured: missing RESEND_API_KEY, QUOTE_TO_EMAIL, or QUOTE_FROM_EMAIL');
-      return res.status(500).json({ ok: false, error: 'Server is not configured to send email yet. Please call us directly.' });
+      console.error(
+        "Quote form misconfigured: missing RESEND_API_KEY, QUOTE_TO_EMAIL, or QUOTE_FROM_EMAIL"
+      );
+      return Response.json(
+        { ok: false, error: "Server is not configured to send email yet. Please call us directly." },
+        { status: 500 }
+      );
     }
 
     const resend = new Resend(apiKey);
-    const subject = `New Quote Request — ${service} in ${town || 'Unknown town'}`;
+    const subject = `New Quote Request — ${service} in ${town || "Unknown town"}`;
 
     const { error } = await resend.emails.send({
       from: fromEmail,
@@ -155,16 +174,26 @@ export default async function handler(req, res) {
       subject,
       html: buildHtml({ name, phone, email, service, town }),
       text: buildText({ name, phone, email, service, town }),
-    });
+    } as Parameters<typeof resend.emails.send>[0]);
 
     if (error) {
-      console.error('Resend API error:', error);
-      return res.status(502).json({ ok: false, error: 'We could not send your request. Please call us directly.' });
+      console.error("Resend API error:", error);
+      return Response.json(
+        { ok: false, error: "We could not send your request. Please call us directly." },
+        { status: 502 }
+      );
     }
 
-    return res.status(200).json({ ok: true });
+    return Response.json({ ok: true });
   } catch (err) {
-    console.error('Quote handler error:', err);
-    return res.status(500).json({ ok: false, error: 'Something went wrong. Please call us directly.' });
+    console.error("Quote handler error:", err);
+    return Response.json(
+      { ok: false, error: "Something went wrong. Please call us directly." },
+      { status: 500 }
+    );
   }
+}
+
+export async function GET() {
+  return Response.json({ ok: false, error: "Method not allowed" }, { status: 405 });
 }
