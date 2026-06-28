@@ -390,7 +390,7 @@ export default function Home() {
           </p>
           <div className="hero-ctas">
             <Link href="#book" className="btn btn-primary">
-              Get a Free Quote
+              Book a Call
               <Arrow />
             </Link>
             <a href="tel:+15086225919" className="btn btn-ghost">
@@ -449,7 +449,7 @@ export default function Home() {
             </div>
             <div className="section-head-right">
               <Link href="#book" className="btn btn-ghost">
-                Request Quote
+                Book a Call
                 <Arrow w="2.2" />
               </Link>
             </div>
@@ -526,7 +526,7 @@ export default function Home() {
                 </li>
               </ul>
               <Link href="#book" className="btn btn-primary">
-                Start a Quote
+                Book a Call
                 <Arrow />
               </Link>
             </div>
