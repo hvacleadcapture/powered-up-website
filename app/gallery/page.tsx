@@ -43,7 +43,7 @@ const ITEMS = [
   {
     cls: "gallery-item",
     src: "/photos/work-service-upgrade-victorian.jpg",
-    alt: "Service entry upgrade on a Victorian home in southeastern Massachusetts",
+    alt: "Service entry upgrade on a Victorian home in the Greater Boston area",
     tag: "Older Home",
     title: "Victorian Service Upgrade",
     desc: "Service entry upgrade on a historic South Shore home. Older homes often need careful coordination with knob-and-tube remediation and modern code compliance.",

@@ -46,10 +46,12 @@ type QuoteFields = {
   email: string;
   service: string;
   town: string;
+  notes: string;
 };
 
-function buildHtml({ name, phone, email, service, town }: QuoteFields): string {
+function buildHtml({ name, phone, email, service, town, notes }: QuoteFields): string {
   const townDisplay = town || "Not provided";
+  const notesDisplay = notes || "None provided";
   return `<!doctype html>
 <html>
 <body style="margin:0;padding:0;background:#f4efe6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#0a1a2f;">
@@ -83,8 +85,12 @@ function buildHtml({ name, phone, email, service, town }: QuoteFields): string {
                 <td style="padding:10px 0;border-bottom:1px solid #e6dfd2;">${esc(service)}</td>
               </tr>
               <tr>
-                <td style="padding:10px 0;font-weight:700;color:#0a1a2f;">Town</td>
-                <td style="padding:10px 0;">${esc(townDisplay)}</td>
+                <td style="padding:10px 0;border-bottom:1px solid #e6dfd2;font-weight:700;color:#0a1a2f;">Town</td>
+                <td style="padding:10px 0;border-bottom:1px solid #e6dfd2;">${esc(townDisplay)}</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 0;font-weight:700;color:#0a1a2f;vertical-align:top;">Details</td>
+                <td style="padding:10px 0;white-space:pre-line;">${esc(notesDisplay)}</td>
               </tr>
             </table>
             <div style="margin-top:24px;padding:14px 16px;background:#f5c518;color:#0a1a2f;font-weight:700;font-size:14px;">
@@ -104,7 +110,7 @@ function buildHtml({ name, phone, email, service, town }: QuoteFields): string {
 </html>`;
 }
 
-function buildText({ name, phone, email, service, town }: QuoteFields): string {
+function buildText({ name, phone, email, service, town, notes }: QuoteFields): string {
   return [
     "New Quote Request — Powered Up LLC",
     "",
@@ -113,6 +119,7 @@ function buildText({ name, phone, email, service, town }: QuoteFields): string {
     `Email:   ${email}`,
     `Service: ${service}`,
     `Town:    ${town || "Not provided"}`,
+    `Details: ${notes || "None provided"}`,
     "",
     "Reply to this email to respond directly to the homeowner.",
   ].join("\n");
@@ -132,6 +139,7 @@ export async function POST(req: Request) {
     const email = String(body.email || "").trim();
     const service = String(body.service || "").trim();
     const town = String(body.town || "").trim();
+    const notes = String(body.notes || "").trim();
 
     if (!name || !phone || !email || !service) {
       return Response.json({ ok: false, error: "Missing required fields." }, { status: 400 });
@@ -172,8 +180,8 @@ export async function POST(req: Request) {
       to: toEmail,
       reply_to: email,
       subject,
-      html: buildHtml({ name, phone, email, service, town }),
-      text: buildText({ name, phone, email, service, town }),
+      html: buildHtml({ name, phone, email, service, town, notes }),
+      text: buildText({ name, phone, email, service, town, notes }),
     } as Parameters<typeof resend.emails.send>[0]);
 
     if (error) {

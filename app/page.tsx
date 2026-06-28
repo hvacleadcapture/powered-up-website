@@ -1,5 +1,5 @@
 import Link from "next/link";
-import QuoteForm from "@/components/QuoteForm";
+import QualifyForm from "@/components/QualifyForm";
 
 const Arrow = ({ w = "2.5" }: { w?: string }) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={w}>
@@ -78,11 +78,11 @@ const FAQ = [
     q: "What towns does Powered Up LLC serve?",
     a: (
       <>
-        Powered Up LLC serves <strong>20 towns across southeastern Massachusetts and the South
+        Powered Up LLC serves <strong>20 towns across the Greater Boston area and the South
         Shore</strong>: Taunton, Raynham, Berkley, Dighton, Lakeville, Norton, Mansfield, Easton,
         Foxboro, Sharon, Bridgewater, Brockton, Stoughton, Middleboro, Hanover, Pembroke, Norwell,
-        Marshfield, Kingston, and Plymouth. We are based in Taunton, MA. We do not service Boston,
-        Cape Cod, or western Massachusetts.
+        Marshfield, Kingston, and Plymouth. We are based in Taunton, MA. Service area expanding —
+        call to confirm coverage for your specific town.
       </>
     ),
   },
@@ -147,7 +147,7 @@ const FAQ = [
         Powered Up LLC is an owner-operated electrical contracting company{" "}
         <strong>founded in 2024 by Micah Gentile</strong>, a Massachusetts-licensed electrician
         based in Taunton. Powered Up is a Black-owned small business serving residential and
-        commercial customers across southeastern Massachusetts and the South Shore.
+        commercial customers across the Greater Boston area and the South Shore.
       </>
     ),
   },
@@ -173,7 +173,7 @@ const JSON_LD = {
       name: "Powered Up LLC",
       alternateName: "Powered Up Electrical",
       description:
-        "Licensed, owner-operated electrical contractor serving Taunton, the South Shore, and southeastern Massachusetts. Panel upgrades, EV chargers, new construction, remodels.",
+        "Licensed, owner-operated electrical contractor serving Taunton, the Greater Boston area, and the South Shore. Panel upgrades, EV chargers, new construction, remodels.",
       url: "https://www.poweredbymicah.com",
       telephone: "+1-508-622-5919",
       email: "micah.gentile@poweredbymicah.com",
@@ -197,7 +197,7 @@ const JSON_LD = {
           containedInPlace: { "@type": "State", name: "Massachusetts" },
         })),
         { "@type": "AdministrativeArea", name: "South Shore, Massachusetts" },
-        { "@type": "AdministrativeArea", name: "Southeastern Massachusetts" },
+        { "@type": "AdministrativeArea", name: "Greater Boston Area" },
       ],
       serviceArea: {
         "@type": "GeoCircle",
@@ -297,7 +297,7 @@ const JSON_LD = {
       mainEntity: [
         {
           q: "What towns does Powered Up LLC serve?",
-          a: "Powered Up LLC serves 20 towns across southeastern Massachusetts and the South Shore: Taunton, Raynham, Berkley, Dighton, Lakeville, Norton, Mansfield, Easton, Foxboro, Sharon, Bridgewater, Brockton, Stoughton, Middleboro, Hanover, Pembroke, Norwell, Marshfield, Kingston, and Plymouth. We are based in Taunton, MA. We do not service Boston, Cape Cod, or western Massachusetts.",
+          a: "Powered Up LLC serves 20 towns across the Greater Boston area and the South Shore: Taunton, Raynham, Berkley, Dighton, Lakeville, Norton, Mansfield, Easton, Foxboro, Sharon, Bridgewater, Brockton, Stoughton, Middleboro, Hanover, Pembroke, Norwell, Marshfield, Kingston, and Plymouth. We are based in Taunton, MA. Service area expanding — call to confirm coverage for your specific town.",
         },
         {
           q: "Is Powered Up LLC licensed and insured in Massachusetts?",
@@ -321,7 +321,7 @@ const JSON_LD = {
         },
         {
           q: "Who owns Powered Up LLC?",
-          a: "Powered Up LLC is an owner-operated electrical contracting company founded in 2024 by Micah Gentile, a Massachusetts-licensed electrician based in Taunton. Powered Up is a Black-owned small business serving residential and commercial customers across southeastern Massachusetts and the South Shore.",
+          a: "Powered Up LLC is an owner-operated electrical contracting company founded in 2024 by Micah Gentile, a Massachusetts-licensed electrician based in Taunton. Powered Up is a Black-owned small business serving residential and commercial customers across the Greater Boston area and the South Shore.",
         },
         {
           q: "Do you handle knob-and-tube or aluminum wiring remediation?",
@@ -389,7 +389,7 @@ export default function Home() {
             handled from quote to inspection by the same licensed electrician.
           </p>
           <div className="hero-ctas">
-            <Link href="#contact" className="btn btn-primary">
+            <Link href="#book" className="btn btn-primary">
               Get a Free Quote
               <Arrow />
             </Link>
@@ -419,6 +419,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* QUALIFICATION FORM */}
+      <section id="book" className="qualify">
+        <div className="wrap">
+          <QualifyForm />
+        </div>
+      </section>
+
       {/* MARQUEE */}
       <div className="marquee">
         <div className="marquee-track">
@@ -441,7 +448,7 @@ export default function Home() {
               </h2>
             </div>
             <div className="section-head-right">
-              <Link href="#contact" className="btn btn-ghost">
+              <Link href="#book" className="btn btn-ghost">
                 Request Quote
                 <Arrow w="2.2" />
               </Link>
@@ -518,7 +525,7 @@ export default function Home() {
                   </span>
                 </li>
               </ul>
-              <Link href="#contact" className="btn btn-primary">
+              <Link href="#book" className="btn btn-primary">
                 Start a Quote
                 <Arrow />
               </Link>
@@ -546,8 +553,8 @@ export default function Home() {
           </div>
 
           <p className="sub-section" style={{ marginBottom: 20 }}>
-            Based in Taunton, serving every town within roughly a 45-minute drive — across the South
-            Shore and southeastern Mass.
+            Based in Taunton, serving every town within roughly a 45-minute drive — across the
+            Greater Boston area and the South Shore.
           </p>
 
           <div className="towns-grid">
@@ -643,22 +650,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CONTACT / FORM */}
-      <section id="contact" className="contact">
+      {/* CONTACT INFO */}
+      <section id="contact" className="contact" style={{ padding: "80px 0" }}>
         <div className="wrap">
           <div className="section-head">
             <div>
-              <div className="eyebrow">Get In Touch</div>
+              <div className="eyebrow">Direct Contact</div>
               <h2 className="h-section">
-                Tell us about your job.<br />
-                <em>We&apos;ll call you back.</em>
+                Prefer to call?<br />
+                <em>Reach Micah direct.</em>
               </h2>
             </div>
           </div>
 
-          <div className="contact-inner">
-            <div className="contact-info">
-              <a href="tel:+15086225919" className="contact-info-row">
+          <div className="contact-info" style={{ maxWidth: 760 }}>
+            <a href="tel:+15086225919" className="contact-info-row">
                 <span className="contact-info-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -706,9 +712,6 @@ export default function Home() {
                 </span>
               </div>
             </div>
-
-            <QuoteForm />
-          </div>
         </div>
       </section>
 

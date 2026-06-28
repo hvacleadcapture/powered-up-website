@@ -938,6 +938,196 @@ section { padding: 110px 0; }
   margin-bottom: 18px;
 }
 
+/* ===== QUALIFICATION FORM ===== */
+.qualify {
+  background: var(--navy);
+  padding: 80px 0;
+  position: relative;
+}
+.qualify-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--cream);
+  color: var(--navy-deep);
+  padding: 48px 44px;
+  box-shadow: 16px 16px 0 var(--yellow);
+  position: relative;
+}
+@media (max-width: 640px) {
+  .qualify-card { padding: 36px 26px; box-shadow: 10px 10px 0 var(--yellow); }
+}
+.qualify-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--navy-deep);
+  margin-bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.qualify-eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--navy-deep);
+}
+.qualify-card h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--navy-deep);
+  margin-bottom: 10px;
+}
+.qualify-card h2 em {
+  font-style: normal;
+  background: var(--yellow);
+  padding: 0 6px;
+}
+.qualify-sub {
+  font-size: 15px;
+  color: rgba(15, 26, 46, 0.7);
+  margin-bottom: 28px;
+  line-height: 1.55;
+}
+.qualify-progress {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.qualify-progress-step {
+  flex: 1;
+  height: 4px;
+  background: rgba(15, 26, 46, 0.12);
+  transition: background 0.3s;
+}
+.qualify-progress-step.active { background: var(--navy-deep); }
+.qualify-progress-step.complete { background: var(--yellow); }
+.qualify-step { display: none; }
+.qualify-step.active { display: block; }
+.qualify-row { margin-bottom: 16px; }
+.qualify-row label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(15, 26, 46, 0.6);
+  margin-bottom: 8px;
+}
+.qualify-row input,
+.qualify-row select,
+.qualify-row textarea {
+  width: 100%;
+  background: rgba(15, 26, 46, 0.04);
+  border: 1px solid rgba(15, 26, 46, 0.15);
+  color: var(--navy-deep);
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+.qualify-row input:focus,
+.qualify-row select:focus,
+.qualify-row textarea:focus {
+  outline: none;
+  border-color: var(--navy-deep);
+  background: var(--bone);
+}
+.qualify-row textarea { min-height: 90px; resize: vertical; }
+.qualify-row-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 480px) {
+  .qualify-row-grid { grid-template-columns: 1fr; }
+}
+.qualify-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+.qualify-btn {
+  flex: 1;
+  padding: 16px 24px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.qualify-btn svg { width: 16px; height: 16px; }
+.qualify-btn-primary {
+  background: var(--navy-deep);
+  color: var(--cream);
+}
+.qualify-btn-primary:hover {
+  background: var(--yellow);
+  color: var(--navy-deep);
+}
+.qualify-btn-primary:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+.qualify-btn-secondary {
+  background: transparent;
+  color: var(--navy-deep);
+  border: 1px solid rgba(15, 26, 46, 0.25);
+}
+.qualify-btn-secondary:hover {
+  background: var(--navy-deep);
+  color: var(--cream);
+}
+.qualify-error {
+  color: #c0392b;
+  font-size: 13px;
+  margin-top: 10px;
+  min-height: 1em;
+}
+.qualify-calendar {
+  margin-top: 20px;
+}
+.qualify-calendar iframe {
+  width: 100%;
+  border: 1px solid rgba(15, 26, 46, 0.15);
+  min-height: 600px;
+}
+.qualify-success-note {
+  background: rgba(255, 212, 0, 0.15);
+  border-left: 4px solid var(--yellow);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.qualify-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+@media (max-width: 720px) {
+  /* 16px font prevents iOS auto-zoom on focus; comfortable touch height */
+  .qualify-row input,
+  .qualify-row select,
+  .qualify-row textarea {
+    min-height: 46px;
+    font-size: 16px;
+  }
+  .qualify-actions { flex-wrap: wrap; }
+}
+
 /* ===== FOOTER ===== */
 footer {
   background: var(--navy-deep);

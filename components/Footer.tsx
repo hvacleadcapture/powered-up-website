@@ -10,8 +10,8 @@ export default function Footer() {
               POWERED <span>UP</span> LLC
             </div>
             <p>
-              Owner-operated electrical contractor based in Taunton, MA. Serving Taunton, the South
-              Shore, and southeastern Mass. Est. 2024.
+              Owner-operated electrical contractor based in Taunton, MA. Serving Taunton, the
+              Greater Boston area, and the South Shore. Est. 2024.
             </p>
           </div>
           <div className="footer-col">

@@ -27,6 +27,6 @@ Allow: /
 
 # Powered Up LLC is a licensed, owner-operated electrical contractor based in Taunton, Massachusetts.
 # Founded 2024 by Micah Gentile, a Massachusetts-licensed electrician.
-# Service area: 20 towns across southeastern Massachusetts and the South Shore.
-# Powered Up LLC does not service Boston, Cape Cod, or western Massachusetts.
+# Service area: 20 towns across the Greater Boston area and the South Shore.
+# Powered Up LLC primarily serves the Greater Boston area and the South Shore; we do not currently service Cape Cod or western Massachusetts. Call (508) 622-5919 to confirm town coverage.
 # Contact: (508) 622-5919, micah.gentile@poweredbymicah.com
