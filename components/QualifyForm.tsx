@@ -20,18 +20,37 @@ const CALENDAR_SRC = "https://calendar.app.google/REPLACE_WITH_MICAH_APPOINTMENT
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default function QualifyForm() {
+// Service dropdown options. Landing pages pass a `defaultService` that must
+// match one of these values for the dropdown to pre-select it.
+const SERVICE_OPTIONS = [
+  "Panel upgrade or replacement",
+  "EV charger installation",
+  "New construction / addition",
+  "Kitchen or bath remodel wiring",
+  "Wiring repair / troubleshooting",
+  "Lighting / fixtures",
+  "Other",
+];
+
+type QualifyFormProps = {
+  defaultService?: string;
+  defaultTown?: string;
+};
+
+export default function QualifyForm({ defaultService, defaultTown }: QualifyFormProps = {}) {
   const [step, setStep] = useState(1);
 
   // Step 1
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [town, setTown] = useState("");
+  const [town, setTown] = useState(defaultTown ?? "");
   const [website, setWebsite] = useState(""); // honeypot
 
-  // Step 2
-  const [service, setService] = useState("");
+  // Step 2 — pre-select the service only if it matches a known option.
+  const [service, setService] = useState(
+    defaultService && SERVICE_OPTIONS.includes(defaultService) ? defaultService : ""
+  );
   const [timeline, setTimeline] = useState("");
   const [notes, setNotes] = useState("");
 
@@ -201,13 +220,9 @@ export default function QualifyForm() {
             onChange={(e) => setService(e.target.value)}
           >
             <option value="">Select one…</option>
-            <option>Panel upgrade or replacement</option>
-            <option>EV charger installation</option>
-            <option>New construction / addition</option>
-            <option>Kitchen or bath remodel wiring</option>
-            <option>Wiring repair / troubleshooting</option>
-            <option>Lighting / fixtures</option>
-            <option>Other</option>
+            {SERVICE_OPTIONS.map((opt) => (
+              <option key={opt}>{opt}</option>
+            ))}
           </select>
         </div>
         <div className="qualify-row">

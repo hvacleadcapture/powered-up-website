@@ -1356,6 +1356,24 @@ footer {
     background: var(--navy-mid);
     color: var(--yellow);
   }
+  .mobile-menu-group-label {
+    padding: 16px 24px 8px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    background: var(--navy-mid);
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-menu a.mobile-menu-sub {
+    min-height: 46px;
+    padding-left: 36px;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0.01em;
+  }
   .mobile-menu-cta {
     gap: 10px;
     color: var(--yellow) !important;
@@ -1469,4 +1487,47 @@ footer {
   .towns-grid {
     max-width: 100%;
   }
+}
+
+/* ============================================================
+   LANDING PAGES (service / town) — body prose
+   ============================================================ */
+.lp-body {
+  padding: 96px 0;
+  background: var(--navy-deep);
+}
+.lp-body .eyebrow {
+  margin-bottom: 26px;
+}
+.lp-prose {
+  max-width: 760px;
+}
+.lp-prose .lp-intro {
+  font-size: clamp(19px, 2.4vw, 23px);
+  line-height: 1.5;
+  color: var(--cream);
+  font-weight: 600;
+  margin-bottom: 30px;
+  letter-spacing: -0.01em;
+}
+.lp-prose p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--muted-strong);
+  margin-bottom: 22px;
+}
+.lp-prose p:last-child {
+  margin-bottom: 0;
+}
+.lp-prose .lp-housing-note {
+  margin-top: 34px;
+  padding: 22px 26px;
+  border-left: 3px solid var(--yellow);
+  background: var(--navy-mid);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted-strong);
+}
+@media (max-width: 640px) {
+  .lp-body { padding: 64px 0; }
 }

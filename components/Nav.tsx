@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { services } from "@/lib/services";
+import { towns } from "@/lib/towns";
 
 const PhoneIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -24,9 +26,9 @@ const BurgerIcon = ({ open }: { open: boolean }) =>
 type NavLink = { href: string; label: string; match?: string };
 
 const LINKS: NavLink[] = [
-  { href: "/#services", label: "Services" },
   { href: "/gallery", label: "Gallery", match: "/gallery" },
   { href: "/blog", label: "Blog", match: "/blog" },
+  { href: "/services/panel-upgrades", label: "Services", match: "/services" },
   { href: "/#area", label: "Service Area" },
   { href: "/#reviews", label: "Reviews" },
   { href: "/#faq", label: "FAQ" },
@@ -105,6 +107,31 @@ export default function Nav() {
             {l.label}
           </Link>
         ))}
+
+        <div className="mobile-menu-group-label">Services</div>
+        {services.map((s) => (
+          <Link
+            key={s.slug}
+            href={`/services/${s.slug}`}
+            className={`mobile-menu-sub${pathname === `/services/${s.slug}` ? " active" : ""}`}
+            onClick={() => setOpen(false)}
+          >
+            {s.serviceName}
+          </Link>
+        ))}
+
+        <div className="mobile-menu-group-label">Towns We Serve</div>
+        {towns.map((t) => (
+          <Link
+            key={t.slug}
+            href={`/${t.slug}`}
+            className={`mobile-menu-sub${pathname === `/${t.slug}` ? " active" : ""}`}
+            onClick={() => setOpen(false)}
+          >
+            {t.townFull}
+          </Link>
+        ))}
+
         <a href="tel:+15086225919" className="mobile-menu-cta" onClick={() => setOpen(false)}>
           <PhoneIcon />
           Call (508) 622-5919

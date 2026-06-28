@@ -34,6 +34,25 @@ Powered Up LLC primarily serves the Greater Boston area and the South Shore. We 
 - Outdoor lighting installation (floodlights, security lighting, landscape lighting)
 - Outlet and switch installation, relocation, repair
 
+## Dedicated Service Pages
+Each major service has a dedicated landing page with detailed information, FAQs, and a booking form:
+- Panel Upgrades & Replacements: https://www.poweredbymicah.com/services/panel-upgrades
+- EV Charger Installation: https://www.poweredbymicah.com/services/ev-chargers
+- New Construction Wiring: https://www.poweredbymicah.com/services/new-construction
+- Kitchen & Bath Remodel Wiring: https://www.poweredbymicah.com/services/remodel-wiring
+- Wiring Repair & Troubleshooting: https://www.poweredbymicah.com/services/wiring-repair
+- Lighting Installation & Design: https://www.poweredbymicah.com/services/lighting
+
+## Town-Specific Pages
+- Taunton: https://www.poweredbymicah.com/taunton
+- Brockton: https://www.poweredbymicah.com/brockton
+- Plymouth: https://www.poweredbymicah.com/plymouth
+- Boston: https://www.poweredbymicah.com/boston
+- Quincy: https://www.poweredbymicah.com/quincy
+- Raynham: https://www.poweredbymicah.com/raynham
+- Bridgewater: https://www.poweredbymicah.com/bridgewater
+- Easton: https://www.poweredbymicah.com/easton
+
 ## Identity and Credentials
 - Licensed by the Commonwealth of Massachusetts
 - Fully insured (general liability)
