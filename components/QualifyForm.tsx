@@ -14,9 +14,8 @@ const ArrowIcon = () => (
   </svg>
 );
 
-// Placeholder Google Calendar Appointment Schedule URL.
-// Micah: replace this with the real "Appointment schedule" embed URL once it's set up.
-const CALENDAR_SRC = "https://calendar.app.google/REPLACE_WITH_MICAH_APPOINTMENT_URL";
+// Micah's Calendly scheduling link, embedded directly as the iframe src.
+const CALENDAR_SRC = "https://calendly.com/micah-gentile-poweredbymicah/powered-up-project-call";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -288,8 +287,6 @@ export default function QualifyForm({ defaultService, defaultTown }: QualifyForm
           below and he&apos;ll call you to confirm.
         </div>
         <div className="qualify-calendar">
-          {/* PLACEHOLDER: Replace CALENDAR_SRC above with the real Google Calendar
-              Appointment Schedule URL once Micah sets it up. */}
           <iframe src={CALENDAR_SRC} frameBorder="0" title="Book a call with Micah" />
         </div>
         <p className="qualify-sub" style={{ marginTop: 18, marginBottom: 0 }}>
