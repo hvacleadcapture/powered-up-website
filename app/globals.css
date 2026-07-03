@@ -1622,3 +1622,49 @@ footer {
   font-weight: 500;
   line-height: 1.4;
 }
+
+/* ===== SERVICES INDEX PAGE ===== */
+/* Reuses the existing .page-header styles; only the widened sub-paragraph is new.
+   (.page-header p is more specific than a bare .page-header-sub, so scope it.) */
+.page-header .page-header-sub {
+  max-width: 720px;
+}
+
+.services-index {
+  background: var(--navy);
+  padding: 80px 0 100px;
+}
+@media (max-width: 720px) { .services-index { padding: 60px 0 80px; } }
+
+.services-index-cta {
+  background: var(--navy-deep);
+  padding: 80px 0;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+.services-index-cta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 14px;
+  letter-spacing: -0.015em;
+}
+.services-index-cta p {
+  font-size: 15px;
+  color: var(--muted-strong);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+/* Mobile menu: the "Services" group header is a link to /services; preserve its
+   header look against the more-generic .mobile-menu a rules. */
+.mobile-menu a.mobile-menu-group-label {
+  color: var(--yellow);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  min-height: 0;
+  padding: 16px 24px 8px;
+  text-transform: uppercase;
+}

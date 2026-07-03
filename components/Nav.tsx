@@ -28,7 +28,7 @@ type NavLink = { href: string; label: string; match?: string };
 const LINKS: NavLink[] = [
   { href: "/gallery", label: "Gallery", match: "/gallery" },
   { href: "/blog", label: "Blog", match: "/blog" },
-  { href: "/services/panel-upgrades", label: "Services", match: "/services" },
+  { href: "/services", label: "Services", match: "/services" },
   { href: "/#area", label: "Service Area" },
   { href: "/#reviews", label: "Reviews" },
   { href: "/#faq", label: "FAQ" },
@@ -108,7 +108,13 @@ export default function Nav() {
           </Link>
         ))}
 
-        <div className="mobile-menu-group-label">Services</div>
+        <Link
+          href="/services"
+          className="mobile-menu-group-label"
+          onClick={() => setOpen(false)}
+        >
+          Services
+        </Link>
         {services.map((s) => (
           <Link
             key={s.slug}
