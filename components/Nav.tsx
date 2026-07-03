@@ -81,7 +81,7 @@ export default function Nav() {
         <div className="nav-right">
           <a href="tel:+15086225919" className="nav-cta">
             <PhoneIcon />
-            Call Micah
+            Call (508) 622-5919
           </a>
           <button
             type="button"

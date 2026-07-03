@@ -64,6 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
           rel="stylesheet"
         />
+        <link rel="preload" as="image" href="/videos/hero-poster.jpg" fetchPriority="high" />
       </head>
       <body>
         <TopBar />

@@ -2,6 +2,10 @@ export type Service = {
   slug: string;
   serviceName: string;
   serviceValue: string;
+  // Homepage services-grid tile copy (single-sourced here, rendered on the home page).
+  homepageLabel: string;
+  homepageTitle: string;
+  homepageDesc: string;
   heroTitle: string;
   heroTitleHighlight: string;
   heroSub: string;
@@ -17,6 +21,10 @@ export const services: Service[] = [
     slug: "panel-upgrades",
     serviceName: "Panel Upgrades & Replacements",
     serviceValue: "Panel upgrade or replacement",
+    homepageLabel: "01 — Panel Work",
+    homepageTitle: "Panel Upgrades & Replacements",
+    homepageDesc:
+      "Full upgrades from 100A to 200A or 400A. Federal Pacific and Zinsco replacements brought up to current MA code. Permits pulled, inspections coordinated.",
     heroTitle: "Electrical Panel Upgrades.",
     heroTitleHighlight: "Done Right.",
     heroSub:
@@ -55,6 +63,10 @@ export const services: Service[] = [
     slug: "ev-chargers",
     serviceName: "EV Charger Installation",
     serviceValue: "EV charger installation",
+    homepageLabel: "02 — Vehicles",
+    homepageTitle: "EV Charger Installation",
+    homepageDesc:
+      "Level 2 home installs for Tesla, ChargePoint, Wallbox, JuiceBox, and other brands. Dedicated circuit sized properly for your vehicle, code-compliant, tested before we leave.",
     heroTitle: "Level 2 EV Chargers.",
     heroTitleHighlight: "Installed Right.",
     heroSub:
@@ -94,6 +106,10 @@ export const services: Service[] = [
     slug: "new-construction",
     serviceName: "New Construction Wiring",
     serviceValue: "New construction / addition",
+    homepageLabel: "03 — Builds",
+    homepageTitle: "New Construction & Additions",
+    homepageDesc:
+      "Rough-in through trim. Load planning done up front so the system supports what you're actually running. Coordination with GCs, framers, and inspectors.",
     heroTitle: "New Construction.",
     heroTitleHighlight: "Wired to Code.",
     heroSub:
@@ -133,6 +149,10 @@ export const services: Service[] = [
     slug: "remodel-wiring",
     serviceName: "Kitchen & Bath Remodel Wiring",
     serviceValue: "Kitchen or bath remodel wiring",
+    homepageLabel: "04 — Remodels",
+    homepageTitle: "Kitchen & Bath Remodel Wiring",
+    homepageDesc:
+      "Outlet relocations, recessed lighting, vanity circuits, GFCI / AFCI work, exhaust hookups. Clean drywall cut-ins and finish work.",
     heroTitle: "Kitchen & Bath Remodels.",
     heroTitleHighlight: "Wired Right.",
     heroSub:
@@ -171,6 +191,10 @@ export const services: Service[] = [
     slug: "wiring-repair",
     serviceName: "Wiring Repair & Troubleshooting",
     serviceValue: "Wiring repair / troubleshooting",
+    homepageLabel: "05 — Diagnostics",
+    homepageTitle: "Wiring Repair & Troubleshooting",
+    homepageDesc:
+      "Tripping breakers, dead outlets, scorched receptacles, hot spots, knob-and-tube replacement, aluminum wiring remediation. We document what we find.",
     heroTitle: "Wiring Problems.",
     heroTitleHighlight: "Diagnosed and Fixed.",
     heroSub:
@@ -210,6 +234,10 @@ export const services: Service[] = [
     slug: "lighting",
     serviceName: "Lighting Installation & Design",
     serviceValue: "Lighting / fixtures",
+    homepageLabel: "06 — Light",
+    homepageTitle: "Fixtures & Outdoor Lighting",
+    homepageDesc:
+      "Chandeliers, ceiling fans, recessed cans, vanity lights, floodlights, security lighting, landscape lighting. Weatherproof installs with outdoor-rated wiring.",
     heroTitle: "Lighting That Actually Works.",
     heroTitleHighlight: "Inside and Out.",
     heroSub:

@@ -56,6 +56,30 @@ const ITEMS = [
     title: "Powered Up LLC · Across the South Shore",
     desc: "If you see the van around Taunton, Brockton, Raynham, or Plymouth — that's us. Residential and commercial · service upgrades · rewires · new construction · car chargers.",
   },
+  {
+    cls: "gallery-item",
+    src: "/photos/work-finished-service.jpg",
+    alt: "Finished electrical service install by Powered Up LLC",
+    tag: "Service Install",
+    title: "Finished Service Install",
+    desc: "Clean finished electrical service work. New meter base, conduit run, and disconnect — permit pulled, inspection coordinated.",
+  },
+  {
+    cls: "gallery-item",
+    src: "/photos/work-panel-install-02.jpg",
+    alt: "Electrical panel work by Powered Up LLC — install and coordination",
+    tag: "Panel Install",
+    title: "Panel Install",
+    desc: "Electrical panel installation with clean wire management. Residential and commercial capability across the South Shore.",
+  },
+  {
+    cls: "gallery-item",
+    src: "/photos/work-panel-install-03.jpg",
+    alt: "Electrical panel work by Powered Up LLC — residential install",
+    tag: "Panel Install",
+    title: "Panel Install",
+    desc: "Residential panel work. All installs done to current Massachusetts Electrical Code with permit and inspection coordination.",
+  },
 ];
 
 export default function GalleryPage() {
@@ -101,8 +125,8 @@ export default function GalleryPage() {
             Got a project?<br />
             <em>Let&apos;s talk about it.</em>
           </h3>
-          <Link href="/#contact" className="btn btn-primary">
-            Get a Free Quote
+          <Link href="/#book" className="btn btn-primary">
+            Book a Call
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M5 12h14M13 5l7 7-7 7" />
             </svg>

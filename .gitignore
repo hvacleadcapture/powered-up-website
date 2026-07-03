@@ -12,3 +12,6 @@ Thumbs.db
 
 # local reference copies of the original static site (preserved in main history)
 legacy-static/
+
+# Pre-compression image backups (local safety copies)
+/public/photos/_originals/

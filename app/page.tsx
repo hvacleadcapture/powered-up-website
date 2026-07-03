@@ -1,5 +1,6 @@
 import Link from "next/link";
 import QualifyForm from "@/components/QualifyForm";
+import { services } from "@/lib/services";
 
 const Arrow = ({ w = "2.5" }: { w?: string }) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={w}>
@@ -18,45 +19,6 @@ const Star = () => (
     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
   </svg>
 );
-
-const SERVICES = [
-  {
-    num: "01 — Panel Work",
-    title: ["Panel Upgrades", "& Replacements"],
-    desc: "Full upgrades from 100A to 200A or 400A. Federal Pacific and Zinsco replacements brought up to current MA code. Permits pulled, inspections coordinated.",
-    tag: "Common service",
-  },
-  {
-    num: "02 — Vehicles",
-    title: ["EV Charger", "Installation"],
-    desc: "Level 2 home installs for Tesla, ChargePoint, Wallbox, JuiceBox, and other brands. Dedicated circuit sized properly for your vehicle, code-compliant, tested before we leave.",
-    tag: "High demand",
-  },
-  {
-    num: "03 — Builds",
-    title: ["New Construction", "& Additions"],
-    desc: "Rough-in through trim. Load planning done up front so the system supports what you're actually running. Coordination with GCs, framers, and inspectors.",
-    tag: "Builder-friendly",
-  },
-  {
-    num: "04 — Remodels",
-    title: ["Kitchen & Bath", "Remodel Wiring"],
-    desc: "Outlet relocations, recessed lighting, vanity circuits, GFCI / AFCI work, exhaust hookups. Clean drywall cut-ins and finish work.",
-    tag: "Designer-friendly",
-  },
-  {
-    num: "05 — Diagnostics",
-    title: ["Wiring Repair", "& Troubleshooting"],
-    desc: "Tripping breakers, dead outlets, scorched receptacles, hot spots, knob-and-tube replacement, aluminum wiring remediation. We document what we find.",
-    tag: "Often urgent",
-  },
-  {
-    num: "06 — Light",
-    title: ["Fixtures & Outdoor", "Lighting"],
-    desc: "Chandeliers, ceiling fans, recessed cans, vanity lights, floodlights, security lighting, landscape lighting. Weatherproof installs with outdoor-rated wiring.",
-    tag: "Quick wins",
-  },
-];
 
 const MARQUEE = [
   "New Construction Wiring",
@@ -213,7 +175,7 @@ const JSON_LD = {
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: "5.0",
-        reviewCount: "15",
+        reviewCount: "21",
         bestRating: "5",
         worstRating: "1",
       },
@@ -368,12 +330,56 @@ const JSON_LD = {
   ],
 };
 
+const REVIEWS = [
+  {
+    name: "Jan Schwaner",
+    source: "Google Review",
+    body: "“Micah was courteous, prompt, easy to communicate with, knowledgeable, and thoroughly professional. We would hire him again — in fact, we have!”",
+  },
+  {
+    name: "Damien Gabourel",
+    source: "Google Review",
+    body: "“Micah is very skilled, professional and knowledgeable. I would recommend his services to anyone.”",
+  },
+  {
+    name: "Joshua Potvin",
+    source: "Google Review · Local Guide",
+    body: "“Micah is a great electrician and a great guy! I would trust him with any of my electrical projects.”",
+  },
+  {
+    name: "Elias Cordova",
+    source: "Google Review",
+    body: "“Excellent experience with Micah from start to finish. The team was professional, responsive, and extremely knowledgeable.”",
+  },
+  {
+    name: "Silas Robinson",
+    source: "Google Review",
+    body: "“Micah is hardworking, diligent, and delightful. He does his work with care and a sunny, contagious attitude. If you need electrical work done you would be lucky to get him.”",
+  },
+  {
+    name: "Trudi Goldberg Pires",
+    source: "Google Review",
+    body: "“Micah responded quickly and arrived early for the job. He did everything in the amount of time he said it would take. Highly recommend.”",
+  },
+];
+
 export default function Home() {
   return (
     <>
       {/* HERO */}
       <section className="hero">
-        <div className="hero-bg" />
+        <video
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/videos/hero-poster.jpg"
+          preload="metadata"
+        >
+          <source src="/videos/hero-loop.mp4" type="video/mp4" media="(min-width: 720px)" />
+          <source src="/videos/hero-loop-mobile.mp4" type="video/mp4" />
+        </video>
         <div className="hero-scrim" />
         <div className="hero-glow" />
         <div className="hero-content">
@@ -456,20 +462,16 @@ export default function Home() {
           </div>
 
           <div className="services-grid">
-            {SERVICES.map((s) => (
-              <div className="service" key={s.num}>
-                <div className="service-num">{s.num}</div>
-                <h3 className="service-title">
-                  {s.title[0]}
-                  <br />
-                  {s.title[1]}
-                </h3>
-                <p className="service-desc">{s.desc}</p>
+            {services.map((s) => (
+              <Link href={`/services/${s.slug}`} className="service" key={s.slug}>
+                <div className="service-num">{s.homepageLabel}</div>
+                <h3 className="service-title">{s.homepageTitle}</h3>
+                <p className="service-desc">{s.homepageDesc}</p>
                 <span className="service-arrow">
-                  {s.tag}
+                  View service
                   <Arrow w="2.2" />
                 </span>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -534,6 +536,78 @@ export default function Home() {
         </div>
       </section>
 
+      {/* MEET MICAH */}
+      <section id="meet-micah" className="meet-micah">
+        <div className="wrap">
+          <div className="meet-micah-inner">
+            <div className="meet-micah-photo">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/photos/micah-portrait.jpg"
+                alt="Micah Gentile, owner and licensed electrician at Powered Up LLC, standing in front of Enphase battery backup installation"
+              />
+              <div className="meet-micah-badge">
+                <span className="meet-micah-badge-label">The Owner</span>
+                <span className="meet-micah-badge-name">Micah Gentile</span>
+              </div>
+            </div>
+
+            <div className="meet-micah-text">
+              <div className="eyebrow">The Owner</div>
+              <h2 className="h-section">
+                Every job. <em>Every quote.</em>
+                <br />
+                Every call.
+              </h2>
+              <p className="sub-section" style={{ marginBottom: 24 }}>
+                Powered Up LLC is owner-operated. When you call, you talk to Micah — the same
+                licensed Massachusetts electrician who will walk your job, write your quote, run the
+                wire, pull the permit, and stand behind the work.
+              </p>
+              <p className="sub-section" style={{ marginBottom: 32 }}>
+                The work spans everything from a broken outlet on a Tuesday morning to a full Enphase
+                battery backup install. Whatever the scope, one licensed electrician handles it from
+                start to finish.
+              </p>
+
+              <div className="meet-micah-credentials">
+                <div className="credential">
+                  <span className="credential-label">Licensed</span>
+                  <span className="credential-value">Massachusetts Electrical Contractor</span>
+                </div>
+                <div className="credential">
+                  <span className="credential-label">Insured</span>
+                  <span className="credential-value">Full General Liability</span>
+                </div>
+                <div className="credential">
+                  <span className="credential-label">Founded</span>
+                  <span className="credential-value">Taunton, MA · 2024</span>
+                </div>
+                <div className="credential">
+                  <span className="credential-label">Specialties</span>
+                  <span className="credential-value">
+                    Enphase Battery Backup · EV Chargers · Panel Upgrades · Whole-Home Rewires
+                  </span>
+                </div>
+              </div>
+
+              <a href="#book" className="btn btn-primary" style={{ marginTop: 32 }}>
+                Book a Call with Micah
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  style={{ width: 16, height: 16 }}
+                >
+                  <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* SERVICE AREA */}
       <section id="area" className="area">
         <div className="wrap">
@@ -546,7 +620,7 @@ export default function Home() {
             </div>
             <div className="section-head-right">
               <a href="tel:+15086225919" className="btn btn-ghost">
-                Not Sure? Call Us
+                Call (508) 622-5919
                 <Phone />
               </a>
             </div>
@@ -604,48 +678,56 @@ export default function Home() {
       {/* REVIEWS */}
       <section id="reviews" className="reviews">
         <div className="wrap">
-          <div className="reviews-inner">
+          <div className="section-head">
             <div>
-              <div className="eyebrow">Trusted Locally</div>
+              <div className="eyebrow">Real Customers · Real Reviews</div>
               <h2 className="h-section">
-                Your review keeps<br />the lights on.<br />
-                <em>Literally.</em>
+                5.0 stars.<br />
+                <em>21 Google reviews.</em>
               </h2>
-              <div className="stars" style={{ marginTop: 24 }}>
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} />
-                ))}
-              </div>
-              <p className="sub-section">
-                Word-of-mouth referrals are how Powered Up grows. If we did good work for you, the
-                single most valuable thing you can do is leave a quick Google review — it helps other
-                neighbors find honest electricians.
-              </p>
             </div>
+            <div className="section-head-right">
+              <a
+                href="https://g.page/r/CWGsx9WryGDjEAE/review"
+                target="_blank"
+                rel="noopener"
+                className="btn btn-primary"
+              >
+                Leave a Review
+                <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 16, height: 16 }}>
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+              </a>
+            </div>
+          </div>
 
-            <div>
-              <div className="reviews-cta">
-                <div className="reviews-cta-eyebrow">Past Customer?</div>
-                <h3>
-                  Leave a Google review.<br />It takes 30 seconds.
-                </h3>
-                <p>
-                  Click below to drop a review on the Powered Up LLC Google Business profile. Five
-                  stars helps a lot — but honest feedback helps even more.
-                </p>
-                <a
-                  href="https://g.page/r/CWGsx9WryGDjEAE/review"
-                  target="_blank"
-                  rel="noopener"
-                  className="btn btn-primary"
-                >
-                  <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 16, height: 16 }}>
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                  </svg>
-                  Leave a Review
-                </a>
+          <div className="reviews-grid">
+            {REVIEWS.map((r) => (
+              <div className="review-card" key={r.name}>
+                <div className="review-stars">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} />
+                  ))}
+                </div>
+                <p className="review-body">{r.body}</p>
+                <div className="review-author">
+                  <span className="review-name">{r.name}</span>
+                  <span className="review-source">{r.source}</span>
+                </div>
               </div>
-            </div>
+            ))}
+          </div>
+
+          <div className="reviews-footer">
+            <span className="reviews-footer-text">See all 21 reviews on Google →</span>
+            <a
+              href="https://www.google.com/search?q=Powered+Up+LLC+Taunton"
+              target="_blank"
+              rel="noopener"
+              className="btn btn-ghost"
+            >
+              View on Google
+            </a>
           </div>
         </div>
       </section>
