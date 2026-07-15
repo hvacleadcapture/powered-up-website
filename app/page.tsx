@@ -174,8 +174,8 @@ const JSON_LD = {
       },
       aggregateRating: {
         "@type": "AggregateRating",
-        ratingValue: "5.0",
-        reviewCount: "21",
+        ratingValue: REVIEW_RATING,
+        reviewCount: String(REVIEW_COUNT),
         bestRating: "5",
         worstRating: "1",
       },
@@ -329,6 +329,9 @@ const JSON_LD = {
     },
   ],
 };
+
+const REVIEW_COUNT = 24;
+const REVIEW_RATING = "5.0";
 
 const REVIEWS = [
   {
@@ -683,7 +686,7 @@ export default function Home() {
               <div className="eyebrow">Real Customers · Real Reviews</div>
               <h2 className="h-section">
                 5.0 stars.<br />
-                <em>21 Google reviews.</em>
+                <em>{`${REVIEW_COUNT} Google reviews.`}</em>
               </h2>
             </div>
             <div className="section-head-right">
@@ -719,7 +722,7 @@ export default function Home() {
           </div>
 
           <div className="reviews-footer">
-            <span className="reviews-footer-text">See all 21 reviews on Google →</span>
+            <span className="reviews-footer-text">{`See all ${REVIEW_COUNT} reviews on Google →`}</span>
             <a
               href="https://www.google.com/search?q=Powered+Up+LLC+Taunton"
               target="_blank"
