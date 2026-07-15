@@ -126,6 +126,9 @@ const FAQ = [
   },
 ];
 
+const REVIEW_COUNT = 24;
+const REVIEW_RATING = "5.0";
+
 const JSON_LD = {
   "@context": "https://schema.org",
   "@graph": [
@@ -329,9 +332,6 @@ const JSON_LD = {
     },
   ],
 };
-
-const REVIEW_COUNT = 24;
-const REVIEW_RATING = "5.0";
 
 const REVIEWS = [
   {
