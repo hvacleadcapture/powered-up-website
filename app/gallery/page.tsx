@@ -17,6 +17,22 @@ export const metadata: Metadata = {
 
 const ITEMS = [
   {
+    cls: "gallery-item",
+    src: "/photos/work-span-smart-panel.jpg",
+    alt: "Finished SPAN smart panel installation by Powered Up LLC — home electrical panel with per-circuit monitoring and dynamic load management",
+    tag: "Smart Panel",
+    title: "SPAN Smart Panel Install",
+    desc: "Finished SPAN smart panel install. Per-circuit monitoring, dynamic load management, and app-based control — the modern replacement for a traditional breaker panel. One of the few installers of this level of electrical hardware on the South Shore.",
+  },
+  {
+    cls: "gallery-item",
+    src: "/photos/work-tesla-charger-install.jpg",
+    alt: "Tesla Wall Connector installed by Powered Up LLC — home EV charger with dedicated circuit and conduit run",
+    tag: "EV Charger",
+    title: "Tesla Wall Connector Install",
+    desc: "Tesla Wall Connector Level 2 EV charger install with dedicated 240V circuit, proper conduit run, and code-compliant disconnect. Installed in an exterior alcove for weather protection.",
+  },
+  {
     cls: "gallery-item portrait",
     src: "/photos/micah-portrait.jpg",
     alt: "Micah Gentile, owner and licensed electrician at Powered Up LLC",
