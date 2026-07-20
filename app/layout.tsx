@@ -3,6 +3,7 @@ import "./globals.css";
 import TopBar from "@/components/TopBar";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const SITE_URL = "https://www.poweredbymicah.com";
 
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preload" as="image" href="/videos/hero-poster.jpg" fetchPriority="high" />
       </head>
       <body>
+        <GoogleAnalytics />
         <TopBar />
         <Nav />
         {children}
